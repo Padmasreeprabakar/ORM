@@ -5,7 +5,6 @@ To develop a Django application to store and retrieve data from Movies Database 
 
 ## ENTITY RELATIONSHIP DIAGRAM
 
-![Screenshot 2025-05-09 110412](https://github.com/user-attachments/assets/6b07e9e6-5b03-4969-b463-b42960e564bc)
 
 
 ## DESIGN STEPS
@@ -23,37 +22,30 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 ## PROGRAM
+admin.py
+```
+from django.contrib import admin
+from.models import Movie,MovieAdmin
+admin.site.register(Movie,MovieAdmin)
+```
 models.py
-
+```
 from django.db import models
 from django.contrib import admin
-class loan (models.Model):
-    Loan_Id=models.CharField(max_length=20,primary_key=True)
-    Name=models.CharField(max_length=100)
-    Age=models.IntegerField()
-    Salary=models.IntegerField()
-    Loan_applied_date=models.DateField()
-    Loan_amount=models.IntegerField()
-    Email=models.EmailField()
-    Phone_no=models.IntegerField()
+class Movie(models.Model):
+    title = models.CharField(max_length=255, help_text="Movie Title")
+    director = models.CharField(max_length=100, help_text="Director Name")
+    release_date = models.DateField(help_text="Release Date")
+    genre = models.CharField(max_length=50, help_text="Movie Genre")
+    rating = models.DecimalField(max_digits=3, decimal_places=1, help_text="Movie Rating (e.g., 8.5)")
+    duration = models.IntegerField(help_text="Duration in Minutes")
 
-
-class loanAdmin(admin.ModelAdmin):
-    list_display=('Loan_Id','Name','Age','Salary','Loan_applied_date','Loan_amount','Email','Phone_no')
-
-
-admin.py
-from django.contrib import admin
-from .models import loan,loanAdmin
-admin.site.register(loan,loanAdmin)
-
-
+class MovieAdmin(admin.ModelAdmin):
+    list_display = ('title', 'director', 'release_date', 'genre', 'rating', 'duration')
+```
 
 ## OUTPUT
-![Screenshot 2025-05-09 110350](https://github.com/user-attachments/assets/d0fc469e-7f49-44bd-8f64-230b24f60290)
-
-![Screenshot 2025-05-09 110402](https://github.com/user-attachments/assets/3cb522a3-6685-4000-b210-f906bec0ef93)
-
+![alt text](<Screenshot 2025-05-06 031127.png>)
 
 
 ## RESULT
